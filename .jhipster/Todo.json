@@ -1,0 +1,23 @@
+{
+  "applications": "*",
+  "changelogDate": "20230625080324",
+  "entityTableName": "todo",
+  "fields": [
+    {
+      "fieldName": "state",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Todo",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,91 @@
+<div>
+  <h2 id="page-heading" data-cy="TodoHeading">
+    <span jhiTranslate="myappApp.todo.home.title">Todos</span>
+
+    <div class="d-flex justify-content-end">
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-todo"
+        [routerLink]="['/todo/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myappApp.todo.home.createLabel"> Créer un nouveau Todo </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="todos?.length === 0">
+    <span jhiTranslate="myappApp.todo.home.notFound">Aucun Todo trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="todos && todos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col">
+            <div class="d-flex">
+              <span jhiTranslate="myappApp.todo.state.type">State</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span jhiTranslate="myappApp.todo.title">Title</span>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of filterByState(false); trackBy: trackId" data-cy="entityTable">
+          <td jhiTranslate="myappApp.todo.state.word.false">A faire</td>
+          <td [ngClass]="todo.state == false ? '' : 'del'">{{ todo.title }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/todo', todo.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/todo', todo.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(todo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngFor="let todo of filterByState(true); trackBy: trackId" data-cy="entityTable">
+          <td jhiTranslate="myappApp.todo.state.word.true">Fait</td>
+          <td [ngClass]="todo.state == false ? '' : 'del'">{{ todo.title }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/todo', todo.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/todo', todo.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(todo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

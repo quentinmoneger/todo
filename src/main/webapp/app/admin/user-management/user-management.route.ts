@@ -26,7 +26,7 @@ const userManagementRoute: Routes = [
     path: '',
     component: UserManagementComponent,
     data: {
-      defaultSort: 'id,asc',
+      defaultSort: 'state,asc',
     },
   },
   {

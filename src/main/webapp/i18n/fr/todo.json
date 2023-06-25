@@ -1,0 +1,32 @@
+{
+  "myappApp": {
+    "todo": {
+      "home": {
+        "title": "Todos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Todo",
+        "createOrEditLabel": "Créer ou éditer un Todo",
+        "notFound": "Aucun Todo trouvé"
+      },
+      "created": "Un nouveau Todo a été créé",
+      "updated": "Le Todo a été mis à jour",
+      "deleted": "Le Todo a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Todo ?"
+      },
+      "detail": {
+        "title": "Todo"
+      },
+      "id": "ID",
+      "state": {
+        "type": "Etat",
+        "word": {
+          "true": "Fait",
+          "false": "A Faire"
+        }
+      },
+      "title": "Titre",
+      "description": "Description"
+    }
+  }
+}
